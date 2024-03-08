@@ -22,7 +22,7 @@ final as (
    from payments
    
    group by  
-       order_id,
+       order_id
 )
 
  
