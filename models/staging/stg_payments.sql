@@ -7,7 +7,10 @@ with payments as (
         id as payment_id,
         order_id,
         payment_method,
-        amount
+      {{ amount_dollars() }} as amount
+
+
+
 
     from dbo.raw_payments
 )
