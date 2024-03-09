@@ -1,4 +1,4 @@
-{% macro amount_dollars() %}
+{% macro amount_dollars(payment) %}
 
-amount/100
+{{payment}}/100
 {% endmacro %}
