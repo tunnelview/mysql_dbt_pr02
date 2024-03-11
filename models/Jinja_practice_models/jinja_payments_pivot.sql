@@ -1,5 +1,5 @@
 
-{%- set payment_methods = ['bank_transfer','credit_card','coupon','gift_card'] -%}
+/*{%- set payment_methods = ['bank_transfer','credit_card','coupon','gift_card'] -%}
  
 
 with payments as (
@@ -9,15 +9,15 @@ with payments as (
 final as (
    select
        order_id,
-       {% for payment_method in payment_methods -%}
+       {%- for payment_method in payment_methods %}
  
        sum(case when payment_method = '{{ payment_method }}' then amount else 0 end) as {{ payment_method }}_amount
-       {% if not loop.last %}
+       {%- if not loop.last -%}
          ,
-       {%-endif %}
+       {%- endif %}
  
          
-       {% endfor-%}        
+       {%- endfor %}        
  
    from payments
    
@@ -26,4 +26,4 @@ final as (
 )
 
  
-select * from final
+select * from final /*
