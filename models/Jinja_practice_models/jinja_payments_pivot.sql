@@ -17,7 +17,7 @@ final as (
        {% endif -%}
  
          
-       {%- endfor %}        
+       {%- endfor %}       
  
    from payments
    
