@@ -1,0 +1,53 @@
+name: CI
+
+# Triggers
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - github_pages_test
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      DBT_USER: ${{ secrets.DBT_USER }}
+      DBT_PASSWORD: ${{ secrets.DBT_PASSWORD }}
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install ODBC Driver for SQL Server
+        run: |
+          curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
+          curl https://packages.microsoft.com/config/ubuntu/20.04/prod.list | sudo tee /etc/apt/sources.list.d/mssql-release.list
+          sudo apt-get update
+          sudo ACCEPT_EULA=Y apt-get install -y msodbcsql18
+
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+
+      - name: Update Protobuf library
+        run: pip install --upgrade protobuf
+
+      - name: Install dbt
+        run: pip install dbt-sqlserver
+
+      - name: Run dbt deps
+        run: dbt deps --profiles-dir .
+
+      - name: Compile docs
+        run: dbt docs generate --profiles-dir . --target dev
+
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: target # The folder the action should deploy.
