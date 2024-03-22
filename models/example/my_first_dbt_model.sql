@@ -7,7 +7,7 @@
     Try changing "table" to "view" below
 */
 
-{{ config(materialized='table') }}
+{{ config(materialized='table') }} -- This is one of the places to configure the incremental strategies.
 
 with source_data as (
 
