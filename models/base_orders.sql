@@ -4,4 +4,4 @@ SELECT
   order_date,
   order_total
 FROM
-  orders
+ ordersinc
