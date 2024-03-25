@@ -1,12 +1,13 @@
 
-CREATE TABLE dbo.ordersinc (
+/*CREATE TABLE dbo.OrdersInc (
   order_id INT PRIMARY KEY,
   customer_id INT,
   order_date DATE,
   order_total FLOAT
 );
+*/
 
-INSERT INTO dbo.ordersinc (order_id, customer_id, order_date, order_total)
+/*INSERT INTO dbo.ordersinc (order_id, customer_id, order_date, order_total)
 VALUES
   (1, 101, '2022-01-01', 100.0),
   (2, 101, '2022-01-02', 150.0),
@@ -28,4 +29,4 @@ VALUES
   (18, 112, '2022-01-18', 200.0),
   (19, 106, '2022-01-19', 75.0),
   (20, 113, '2022-01-20', 50.0);
-
+*/
