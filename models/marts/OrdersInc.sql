@@ -30,3 +30,13 @@ VALUES
   (19, 106, '2022-01-19', 75.0),
   (20, 113, '2022-01-20', 50.0);
 */
+
+
+{{ config(materialized='table') }}
+
+--select * from dbo.OrdersInc
+
+With Rename as ( id as customer_id, 
+order_total as Order_Total)
+
+select * from Rename;
