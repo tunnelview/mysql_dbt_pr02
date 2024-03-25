@@ -32,11 +32,15 @@ VALUES
 */
 
 
-{{ config(materialized='table') }}
+--{{ config(materialized='table') }}
 
 --select * from dbo.OrdersInc
 
-With Rename as ( id as customer_id, 
-order_total as Order_Total)
+with Rename as ( 
+Select
+order_id as Order_Id,
+order_total as Order_Total
+from dbo.OrdersInc
+)
 
-select * from Rename;
+select * from Rename
