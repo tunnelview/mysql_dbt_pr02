@@ -1,6 +1,6 @@
 {{config(
   materialized='incremental',
-  unique_key='Purchase_Dd',
+  unique_key='Purchase_Id',
   strategy='check'
 )}}
 
