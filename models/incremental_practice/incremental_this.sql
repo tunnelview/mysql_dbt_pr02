@@ -2,5 +2,5 @@
 
 {{ config(materialized='incremental') }}
 
-select * from [dbo].[source_orders] -- Here 
+select * from [dbo].[Orders] -- Here 
 where order_datetime > max(order_datetime) from {{this}}
