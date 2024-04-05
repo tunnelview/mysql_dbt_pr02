@@ -3,4 +3,4 @@
 {{ config(materialized='incremental') }}
 
 select * from [dbo].[Orders] -- Here 
-where order_datetime > max(order_datetime) from {{this}}
+where {{this}}.order_datetime > max({{this}}.order_datetime)
