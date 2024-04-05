@@ -1,3 +1,5 @@
+--This is the first incremental strategy
+
 {{config(
   materialized='incremental',
   unique_key='Purchase_Id',
