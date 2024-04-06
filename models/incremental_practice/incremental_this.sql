@@ -17,6 +17,6 @@ FROM
     dbo.Orders
 {% if is_incremental() %}
 WHERE 
-    orders.order_datetime > '{{dbt_utils.get_last_utc_time(this, 'orders.order_datetime')}}' --(select max(LAST_UTC_TS) from {{ this }})
+    order_datetime > '{{dbt_utils.get_last_utc_time(this, 'order_datetime')}}' --(select max(LAST_UTC_TS) from {{ this }})
 {% endif %}
 
